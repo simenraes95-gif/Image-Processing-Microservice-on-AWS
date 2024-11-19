@@ -1,48 +1,39 @@
 import express from "express";
+import { Request, Response } from "express";
 import bodyParser from "body-parser";
 import { isUri } from "valid-url";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util.js";
 
-// Init the Express application
 const app = express();
-
-// Set the network port
 const port = process.env.PORT || 8082;
-
-// Use the body parser middleware for post requests
 app.use(bodyParser.json());
 
-// @TODO1 IMPLEMENT A RESTFUL ENDPOINT
-app.get("/filteredimage", async (req, res) => {
-  const { image_url: imageUrl } = req.query;
+app.get("/filteredimage", async (req: Request, res: Response): Promise<any> => {
+  const { image_url }: any = req.query;
   const imageRegex = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp))$/i;
 
-  if (!imageUrl) {
+  if (!image_url) {
     return res.status(422).send({ message: "Unprocessable entity" });
   }
 
-  if (!imageRegex.test(imageUrl)) {
+  if (!imageRegex.test(image_url)) {
     return res.status(404).send({ message: "Image url not found" });
   }
 
-  if (!imageUrl || (typeof imageUrl === "string" && !isUri(imageUrl))) {
+  if (!image_url || (typeof image_url === "string" && !isUri(image_url))) {
     return res
       .status(400)
       .send({ auth: false, message: "Image url is missing or malformed" });
   }
 
-  const filteredPath = await filterImageFromURL(imageUrl);
+  const filteredPath = await filterImageFromURL(image_url);
   res.sendFile(filteredPath, {}, () => deleteLocalFiles([filteredPath]));
 });
-//! END @TODO1
 
-// Root Endpoint
-// Displays a simple message to the user
-app.get("/", async (req, res) => {
+app.get("/", async (req: Request, res: Response) => {
   res.send("try GET /filteredimage?image_url={{}}");
 });
 
-// Start the Server
 app.listen(port, () => {
   console.log(`server running http://localhost:${port}`);
   console.log(`press CTRL+C to stop server`);

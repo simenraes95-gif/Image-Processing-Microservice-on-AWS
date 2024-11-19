@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "node --loader ts-node/esm --experimental-specifier-resolution=node src/server.ts",
+    "start": "node --loader ts-node/esm --experimental-specifier-resolution=node src/server.ts"
+  },
+  "author": "LinhLV98",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jimp": "^0.2.28",
+    "@types/node": "^22.9.0",
+    "axios": "^1.7.2",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "jimp": "^0.22.12",
+    "typescript": "^5.6.3",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.2.0",
+    "@types/valid-url": "^1.0.7",
+    "concurrently": "^9.1.0",
+    "eslint": "^8.44.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2"
+  }
+}

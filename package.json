@@ -2,11 +2,12 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.ts",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
     "dev": "node --loader ts-node/esm --experimental-specifier-resolution=node src/server.ts",
-    "start": "node --loader ts-node/esm --experimental-specifier-resolution=node src/server.ts"
+    "start": "node --loader ts-node/esm --experimental-specifier-resolution=node dist/server.js",
+    "build": "tsc"
   },
   "author": "LinhLV98",
   "license": "ISC",

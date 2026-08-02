@@ -30,9 +30,9 @@ The application is deployed on AWS Elastic Beanstalk and can be accessed at:
 ```bash
 # Test the root endpoint
 curl http://image-filter-env.eba-x3fb9htf.us-east-1.elasticbeanstalk.com/
-
+  
 # Filter an image (provide a valid image URL)
-curl "http://image-filter-env.eba-x3fb9htf.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://example.com/image.jpg"
+curl "http://image-filter-env.eba-x3fb9htf.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg"
 ```
 
 ### Expected Responses

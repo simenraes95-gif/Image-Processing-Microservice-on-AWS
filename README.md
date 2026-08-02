@@ -19,6 +19,28 @@ To complete this project, you will need to:
 
 Successful URL responses should have a 200 code. Ensure that you include error codes for the scenario that someone uploads something other than an image and for other common errors.
 
+## Live Deployment
+
+The application is deployed on AWS Elastic Beanstalk and can be accessed at:
+
+**Endpoint URL:** [http://image-filter-env.eba-x3fb9htf.us-east-1.elasticbeanstalk.com](http://image-filter-env.eba-x3fb9htf.us-east-1.elasticbeanstalk.com)
+
+### Example Usage
+
+```bash
+# Test the root endpoint
+curl http://image-filter-env.eba-x3fb9htf.us-east-1.elasticbeanstalk.com/
+
+# Filter an image (provide a valid image URL)
+curl "http://image-filter-env.eba-x3fb9htf.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://example.com/image.jpg"
+```
+
+### Expected Responses
+
+- **200 OK** - Successfully filtered and returned the image
+- **400 Bad Request** - Missing or invalid `image_url` query parameter
+- **422 Unprocessable Entity** - Unable to process the provided image
+
 ## License
 
 [License](LICENSE.txt)
